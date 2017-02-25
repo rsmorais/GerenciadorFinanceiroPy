@@ -1,5 +1,5 @@
 .db
-teste/
+testes/
 *.db
 /__*
 \__*
