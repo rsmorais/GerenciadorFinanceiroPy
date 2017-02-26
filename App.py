@@ -3,26 +3,36 @@
 
 from tkinter import *
 from tkinter.ttk import *
-import zlib,base64
 import appMenu
-import os
 
-def callback():
-	lista = [(dsTipoLancamento.get(), 'rafael', '2017-02-23')]
-	print(lista)
-	tblTLA = b.TBL_TLA_TipoLancamento()	
-	tblTLA.inserir(lista)
+class Application:
+    def __init__(self):
+        self.window = Tk()
+        self.window.title("Contabilidade")
+        self.window.geometry("600x600")
+        icon = PhotoImage(file='Img/py.png')
+        self.window.tk.call('wm', 'iconphoto', self.window._w, icon)
 
-janela = Tk()
-janela.title("Contabilidade")
-janela.geometry("600x600")
+    def load_menu(self):
+        obj= appMenu.Main_menu(self.window)
+        mainMenu = obj.getMenu()
+        self.window.config(menu=mainMenu)
+        self.window.mainloop()
 
-icon = PhotoImage(file='Img/py.png')
-janela.tk.call('wm', 'iconphoto', janela._w, icon)
-
-obj= appMenu.Main_menu(janela)
-mainMenu = obj.getMenu()
-janela.config(menu=mainMenu)
+    def main_loop(self):
+        self.window.mainloop()
 
 
-janela.mainloop()
+
+
+app = Application()
+app.load_menu()
+app.main_loop()
+
+
+
+
+
+
+
+
