@@ -4,11 +4,10 @@ from Classes.Frames.frame_btn_crud import FrameCRUD
 class WinIndisponivel:
     def __init__(self, master):
         self.master = master
-        print('oi2')
         
     def load_jan(self):
-        print('oi3')
-        self.win=Toplevel()
+        self.win=Frame(self.master)
+        #self.win=Toplevel()
         self.l1=Label(self.win, text='Essa interface ainda não foi implementada!')
         self.l2=Label(self.win, text='Utilizada para estudos.')
         self.l3=Label(self.win, text='Fevereiro de 2017.')
@@ -20,11 +19,12 @@ class WinIndisponivel:
         self.l3.pack()  
         #btnSair.pack()
         self.btns.pack()
+        self.win.pack()
         
-        self.win.geometry('300x200')
-        self.win.transient(self.master)
-        self.win.focus_force()
-        self.win.grab_set()
+        #self.win.geometry('300x200')
+        #self.win.transient(self.master)
+        #self.win.focus_force()
+        #self.win.grab_set()
         #pos_load()
         
     def pos_load(self):
