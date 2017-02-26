@@ -15,7 +15,7 @@ class Application:
 
     def load_menu(self):
         obj= appMenu.Main_menu(self.window)
-        mainMenu = obj.getMenu()
+        mainMenu = obj.get_menu()
         self.window.config(menu=mainMenu)
         self.window.mainloop()
 

@@ -1,6 +1,7 @@
 from tkinter import *
 from Classes.Windows.win_sobre import WinSobre
 from Classes.Windows.Cadastro.win_indisponivel import *
+from Classes.Windows.Cadastro.win_cadastro_TLA import *
 class Main_menu:
 	
     def __init__(self, argWindow):
@@ -26,8 +27,8 @@ class Main_menu:
         obj = WinIndisponivel(self.myWindow)
         obj.load_jan()
         
-    def cadastro_tipo_pagamento(self):
-        obj = WinIndisponivel(self.myWindow)
+    def cadastro_tipo_lancamento(self):
+        obj = WinCadastroTLA(self.myWindow)
         obj.load_jan()
         
     def cadastro_cartao(self):
@@ -42,7 +43,7 @@ class Main_menu:
         obj = WinSobre(self.myWindow)
         obj.load_jan()
                     
-    def getMenu(self):
+    def get_menu(self):
         #adicionando a barra de menu à janela
         menubar = Menu(self.myWindow)
         
@@ -65,8 +66,8 @@ class Main_menu:
         
         #submenu de CADASTRO
         menuCadastro.add_command(label='Lançamento', command = self.cadastro_lancamento)
-        menuCadastro.add_command(label='Forma de Pag...', command = self.cadastro_forma_pagamento)
-        menuCadastro.add_command(label='Tipo de pag...', command = self.cadastro_tipo_pagamento)
+        menuCadastro.add_command(label='Forma de Pagamento', command = self.cadastro_forma_pagamento)
+        menuCadastro.add_command(label='Tipo de lançamento', command = self.cadastro_tipo_lancamento)
         menuCadastro.add_command(label='Cartão', command = self.cadastro_cartao)
         
         #submenu de RELATORIO

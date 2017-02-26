@@ -1,5 +1,5 @@
 from tkinter import *
-from Classes.Frames.frame_btn_crud import FrameCRUD
+from Classes.Frames.frame_btn_crud import FrameBtnCRUD
 
 class WinIndisponivel:
     def __init__(self, master):
@@ -12,7 +12,7 @@ class WinIndisponivel:
         self.l2=Label(self.win, text='Utilizada para estudos.')
         self.l3=Label(self.win, text='Fevereiro de 2017.')
         #btnSair=Button(self.win, text='Fechar', command = self.close_window)
-        obj = FrameCRUD(self.win)
+        obj = FrameBtnCRUD(self.win)
         self.btns = obj.getFrame()        
         self.l1.pack()
         self.l2.pack()
