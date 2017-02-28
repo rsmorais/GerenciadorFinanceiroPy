@@ -20,11 +20,11 @@ class FrameBtnCRUD:
     
     def set_command(self, argBtn, argCommand):
         if argBtn == "btnSalvar":
-            self.btnSalvar.bind("<Button-1>", argCommand) 
+            self.btnSalvar.config(command=argCommand) 
         elif argBtn == "btnDeletar":
-            self.btnDeletar.bind("<Button-1>", argCommand) 
+            self.btnDeletar.config(command=argCommand) 
         elif argBtn == "btnSair":
-            self.btnSair.bind("<Button-1>", argCommand)  
+            self.btnSair.config(command=argCommand)
 
     def sair(self):
         self.master.destroy()

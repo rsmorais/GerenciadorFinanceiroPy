@@ -21,9 +21,7 @@ class Application:
 
     def main_loop(self):
         self.window.mainloop()
-
-
-
+        
 
 app = Application()
 app.load_menu()

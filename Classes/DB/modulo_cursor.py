@@ -9,6 +9,9 @@ class ModuloCursor():
 		conn = sqlite3.connect(self.db)
 		cursor = conn.cursor()
 		if(arg != None):
+			print(sql)
+			print(arg[0])
+			print(type(arg))
 			cursor.execute(sql, arg)
 		else:
 			cursor.execute(sql)
