@@ -1,16 +1,16 @@
 from tkinter import *
 from Classes.Frames.frame_btn_crud import FrameBtnCRUD as Btn
-from Classes.Frames.frame_key_tla_crud import FrameKeyTlaCRUD as Key
-from Classes.Frames.frame_form_tla_crud import FrameFormTlaCRUD as Form
+from Classes.Frames.frame_key_crt_crud import FrameKeyCrtCRUD as Key
+from Classes.Frames.frame_form_crt_crud import FrameFormCrtCRUD as Form
 from Classes.Frames.frame_espacador import Espacador
 
-class WinCadastroTLA:
+class WinCadastroCRT:
     def __init__(self, master):
         self.master = master
         self.win=Frame(self.master)
         
     def load_jan(self):        
-        self.Titulo = Label(self.win, text='CADASTRO DE TIPOS DE LANÇAMENTO')
+        self.Titulo = Label(self.win, text='CADASTRO DE CARTÕES')
 
         #instanciando objetos
         self.btnsCRUD = Btn(self.win)

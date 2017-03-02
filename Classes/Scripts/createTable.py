@@ -26,8 +26,8 @@ cursor.execute("""
 create table CRT_Cartao(
 	CRT_idCartao INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	CRT_dsCartao VARCHAR(40) NOT NULL,
-	CRT_dtVencimento DATE,
-	CRT_dtFechamento DATE,
+	CRT_dtVencimento INTEGER,
+	CRT_dtFechamento INTEGER,
 	CRT_nmUsuario VARCHAR(20),
 	CRT_dtAtualizacao DATE
 );

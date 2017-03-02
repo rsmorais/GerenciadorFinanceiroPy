@@ -9,9 +9,9 @@ class FrameBtnCRUD:
         self.btnDeletar = Button(self.frame, text="Deletar")
         self.btnSair = Button(self.frame, text="Sair", command=self.sair)
         
-        self.btnSalvar.grid(row=0, column=0)
-        self.btnDeletar.grid(row=0, column=1)
-        self.btnSair.grid(row=0, column=2)
+        self.show_salvar()
+        self.show_deletar()
+        self.show_sair()
 
     #retorna o frame, para caso a pessoa queira
     #altera a posição do mesmo na interface    
@@ -28,3 +28,22 @@ class FrameBtnCRUD:
 
     def sair(self):
         self.master.destroy()
+
+    def show_salvar(self):
+        self.btnSalvar.grid(row=0, column=0)
+        
+    def show_deletar(self):
+        self.btnDeletar.grid(row=0, column=1)
+
+    def show_sair(self):
+        self.btnSair.grid(row=0, column=2)
+
+    def hide_salvar(self):
+        self.btnSalvar.grid_forget()
+
+    def hide_deletar(self):
+        self.btnDeletar.grid_forget()
+
+    def hide_sair(self):
+        self.btnSair.grid_forget()
+

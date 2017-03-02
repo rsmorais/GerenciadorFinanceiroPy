@@ -1,11 +1,13 @@
+from Classes.Util.module_utils import ModuleUtils as ModUtils
 import sqlite3
 
 class TBL_TLA_TipoLancamento():
 	
 	def __init__(self):
-		self.db = 'Financeiro.db'
-		self.data = '2017-02-25'
-		self.usuario  = 'rafael'
+		varModUtils = ModUtils()
+		self.db = varModUtils.get_db()
+		self.data = varModUtils.get_date()
+		self.usuario  = varModUtils.get_user()
                
 	def insert(self, lista):
 		print('insert TLA')
@@ -38,12 +40,12 @@ class TBL_TLA_TipoLancamento():
 			cursor.executemany("""
 				DELETE FROM TLA_TipoLancamento
 				WHERE TLA_idTipoLancamento = ?
-				""", [(linha['TLA_idTipoLancamento'])])
+				""", [(linha['TLA_idTipoLancamento'],)])
 			
 		# gravando no bd
 		conn.commit()
 		conn.close()
-		print('Dados inseridos com sucesso.')
+		print('Dados deletados com sucesso.')
 				
 	def edit(self, lista):
 		print('edit TLA')
@@ -63,4 +65,3 @@ class TBL_TLA_TipoLancamento():
 		conn.close()
 		print('Dados atualizados com sucesso.')
 
-app = TBL_TLA_TipoLancamento()

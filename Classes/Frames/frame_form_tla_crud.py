@@ -2,6 +2,7 @@ from tkinter import *
 from Classes.DB.modulo_cursor import ModuloCursor
 from Classes.Scripts.scriptSQL import RecuperaTLA
 from Classes.DB.tbl_TLA import TBL_TLA_TipoLancamento as TLA
+from Classes.Util.popup_multi import PopupMulti
 import sys
 
 class FrameFormTlaCRUD:
@@ -19,7 +20,7 @@ class FrameFormTlaCRUD:
         self.lbDt = Label(self.frame, text='Data de Atualização: ')
         self.txtTipo = Entry(self.frame)
         
-        self.Titulo.grid(row=0, column=0, columnspan=2, sticky=E+W)
+        self.Titulo.grid(row=0, column=0, columnspan=4, sticky=E+W)
         self.lbTipo.grid(row=1, column=0, sticky=E)
         self.txtTipo.grid(row=1, column=1, sticky=W)
         self.lbDt.grid(row=2, column=0, sticky=E)
@@ -36,21 +37,30 @@ class FrameFormTlaCRUD:
     def retrieve(self, arg):
         cursor = ModuloCursor()
         self.dataSQL = cursor.retrieve(self.sql, arg)
-        self.post_retrieve()
+        self.pos_retrieve()
 
-    def post_retrieve(self):
+    def pos_retrieve(self):
         if len(self.dataSQL) > 0:
-            print(self.dataSQL[0])
-            self.idTipo = self.dataSQL[0][0]
-            self.txtTipo.delete(0, 'end')
-            self.txtTipo.insert(0, self.dataSQL[0][1])
-            print(type(self.dataSQL[0][2]))
-            self.lbDtAtualizacao.config(text=self.dataSQL[0][2])
+            if len(self.dataSQL) > 1:
+                args = []
+                args.append(self.return_popup)
+                args.append('---Selecione o Tipo de Lançamento---')
+                args.append(1)
+                self.popup = PopupMulti(self.master, self.dataSQL)
+                self.popup.load_jan(args)
+
+            else:
+                self.idTipo = self.dataSQL[0][0]
+                self.txtTipo.delete(0, 'end')
+                self.txtTipo.insert(0, self.dataSQL[0][1])
+                self.lbDtAtualizacao.config(text=self.dataSQL[0][2])
+
+        else:
+            self.new_row()
 
     def new_row(self):
         self.idTipo = None
         self.txtTipo.delete(0, 'end')
-        print(type(""))
         self.lbDtAtualizacao.config(text="")
 
     def pre_update(self):
@@ -64,7 +74,6 @@ class FrameFormTlaCRUD:
         self.listArgs.append(dic)
 
     def update(self):
-        print('update')
         if self.pre_update():
             self.get_args()
             bd = TLA()
@@ -72,3 +81,28 @@ class FrameFormTlaCRUD:
                 bd.insert(self.listArgs)
             else:
                 bd.edit(self.listArgs)
+
+    def pos_delete(self):
+        self.new_row()
+
+    def pre_delete(self):
+        return True
+
+    def delete(self):
+        if self.pre_delete():
+            self.get_args()
+            bd = TLA()
+            if(self.idTipo == None):                
+                #exibir msm de erro
+                pass
+            else:
+                bd.delete(self.listArgs)
+
+            self.pos_delete();
+    
+    def return_popup(self, number):
+        self.idTipo = self.dataSQL[number][0]
+        self.txtTipo.delete(0, 'end')
+        self.txtTipo.insert(0, self.dataSQL[number][1])
+        self.lbDtAtualizacao.config(text=self.dataSQL[number][2])
+        self.popup.close_window()

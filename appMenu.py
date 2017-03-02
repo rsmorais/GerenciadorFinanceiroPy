@@ -2,45 +2,65 @@ from tkinter import *
 from Classes.Windows.win_sobre import WinSobre
 from Classes.Windows.Cadastro.win_indisponivel import *
 from Classes.Windows.Cadastro.win_cadastro_TLA import *
+from Classes.Windows.Cadastro.win_cadastro_CRT import *
 class Main_menu:
 	
     def __init__(self, argWindow):
         self.myWindow = argWindow
+        self.frameFilho = None
         
     def arquivo_alterar_BD(self):
+        self.close_window()
         obj = WinIndisponivel(self.myWindow)
+        self.frameFilho = obj.get_frame()
         obj.load_jan()
         
     def arquivo_desconectar(self):
+        self.close_window()
         obj = WinIndisponivel(self.myWindow)
+        self.frameFilho = obj.get_frame()
         obj.load_jan()
         
     def arquivo_quit(self):
+        self.close_window()
         obj = WinIndisponivel(self.myWindow)
+        self.frameFilho = obj.get_frame()
         obj.load_jan()
         
     def cadastro_lancamento(self):
+        self.close_window()
         obj = WinIndisponivel(self.myWindow)
+        self.frameFilho = obj.get_frame()
         obj.load_jan()
         
     def cadastro_forma_pagamento(self):
+        self.close_window()
         obj = WinIndisponivel(self.myWindow)
+        self.frameFilho = obj.get_frame()
         obj.load_jan()
         
     def cadastro_tipo_lancamento(self):
+        self.close_window()
         obj = WinCadastroTLA(self.myWindow)
+        self.frameFilho = obj.get_frame()
         obj.load_jan()
         
     def cadastro_cartao(self):
-        obj = WinIndisponivel(self.myWindow)
+        self.close_window()
+        obj = WinCadastroCRT(self.myWindow)
+        self.frameFilho = obj.get_frame()
         obj.load_jan()
         
     def relatorio_lancamentos(self):
+        self.close_window()
         obj = WinIndisponivel(self.myWindow)
+        self.frameFilho = obj.get_frame()
         obj.load_jan()
         
     def sobre(self):
+        self.close_window()
         obj = WinSobre(self.myWindow)
+        self.frameFilho = obj.get_frame()
         obj.load_jan()
                     
     def get_menu(self):
@@ -74,7 +94,10 @@ class Main_menu:
         menuRelatorio.add_command(label='Lançamentos...', command = self.relatorio_lancamentos)
         
         return menubar
-        
+    
+    def close_window(self):
+        if self.frameFilho != None:
+           self.frameFilho.destroy()   
 		
 		
 		

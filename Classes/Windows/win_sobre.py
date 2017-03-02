@@ -3,9 +3,9 @@ from tkinter import *
 class WinSobre:
     def __init__(self, master):
         self.master = master
-        
-    def load_jan(self):
         self.win=Toplevel()
+
+    def load_jan(self):        
         self.l1=Label(self.win, text='Aplicação de gerenciamento financeiro!')
         self.l2=Label(self.win, text='Utilizada para estudos.')
         self.l3=Label(self.win, text='Fevereiro de 2017.')
@@ -21,6 +21,9 @@ class WinSobre:
         self.win.focus_force()
         self.win.grab_set()
         
+    def get_frame(self):
+        return self.win
+
     def close_window(self):
         self.win.destroy()
 
